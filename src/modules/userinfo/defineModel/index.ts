@@ -1,9 +1,9 @@
 /*
- * 方案1：1.创建模型
+ * 方案1：创建user模型
  * */
 
-import { sequelize } from '../dao/BaseDaoDefine'
-import { DataType, DataTypes } from 'sequelize'
+import { sequelize } from '../../BaseDao'
+import { DataTypes } from 'sequelize'
 
 class UserInfo {
   static createModel() {

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@alias/*": ["src/*"] // 这里的@alias是你的别名，"src/*"是对应的实际路径
+    }
+  }
+}
