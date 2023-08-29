@@ -1,4 +1,4 @@
-const secThirdCtgys = [
+export const secThirdCtgys = [
   {
     secondctgyId: 1,
     secctgyname: '0-2岁',
@@ -209,7 +209,7 @@ type K = keyof EleofArr<typeof secThirdCtgys> // 数组元素键名
 type Keys = K[]
 let keys: Keys = ['secctgyname', 'thirdname']
 
-type ItemType<T extends object[]> = {
+export type ItemType<T extends object[]> = {
   [K in keyof EleofArr<T>]: EleofArr<T>[K]
 }
 // 第二步获取指定key组成的数组
@@ -223,5 +223,5 @@ function getSubltemFrmArr<T extends ItemType<T>[], K extends keyof EleofArr<T>>(
     }, {}) as Pick<EleofArr<T>, K>
   })
 }
-const res = getSubltemFrmArr(secThirdCtgys, 'secctgyname')
-console.log()
+// 二级分类数组
+export const OneRes = getSubltemFrmArr(secThirdCtgys, "secondctgyId","secctgyname")
