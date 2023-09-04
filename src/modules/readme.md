@@ -4,8 +4,8 @@
 三、执行查询 
 1. 使用sequelize的define方法定义一个模型来实现 单表，不适用多表级联添加更新
    baseDao --> defineModel --> userDao
-2. 使用sequelize的原生操作-所有操作
-3. 使用模型类来实现-单表查询
+2. 使用sequelize的原生操作-适合增删改查所有场景
+3. 使用模型类来实现-对单表进行的各种查询
    baseDao --> baseDao.addModel(decorateModel) --> userDao
 
 ## 数据库连接池

@@ -2,10 +2,10 @@ import Koa from 'koa'
 import body from "koa-body";// 支持post请求依赖
 import json from 'koa-json'// 支持响应数据对象 转 json
 import Router from "koa-router";
+import allRouterLoader from './common/AllCtrlRouterLoader'
+import Dbconfig from "./config/Dbconfig";
 const app = new Koa()
 const router = new Router()
-import allRouterLoader from './common/AllRouterLoader'
-import Dbconfig from "./config/Dbconfig";
 allRouterLoader.init(app) //动态加载路由
 
 
@@ -18,6 +18,10 @@ allRouterLoader.init(app) //动态加载路由
 // router.use(userRouter.routes(),userRouter.allowedMethods())
 
 // // 加载路由到全局路由上
-// app.use(router.routes())
-// app.listen(3002)
-// console.log('3002.。。')
+/*router.get('/test',(ctx)=>{
+    ctx.body = 'test'
+})
+app.use(body())
+app.use(json())
+app.use(router.routes())
+app.listen(3002)*/
