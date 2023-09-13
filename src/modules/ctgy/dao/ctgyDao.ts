@@ -3,6 +3,11 @@ import {sequelize} from "@/modules/BaseDao";
 import {convert} from "@/modules/ctgy/ctgytypes";
 
 class CtgyDao {
+    static async findFirstCtgyList(){
+        const sql = `select * from firstctgy`
+        const res = (await sequelize.query(sql))[0] as any[]
+        return (res)
+    }
     static async findSecondCtgyAndThirdCtgyByFirstCtgyDao(firstctgyid: number){
         return await findSecondCtgyAndThirdCtgyByFirstCtgy(firstctgyid)
     }

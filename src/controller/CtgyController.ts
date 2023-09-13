@@ -5,6 +5,12 @@ import {success} from "@/common/ResResult";
 import {Controller} from "@/decorator/controllerdecorator";
 @Controller('/ctgymodule')
 class CtgyController{
+
+    @get('/findFirstCtgyList')
+    async findFirstCtgyList(ctx:Context){
+        ctx.body = success(await CtgyDao.findFirstCtgyList())
+    }
+
     @get("/findSecThrdCtgys/:firstctgyid")
     async findSecThirdCtgys(ctx:Context){
         const {firstctgyid} = ctx.params;
