@@ -146,3 +146,6 @@ LEFT JOIN secondctgy ON firstctgy.firstCtgyId = secondctgy.firstctgyId
 LEFT JOIN thirdctgy ON secondctgy.secondctgyId = thirdctgy.secctgyId
 WHERE firstctgy.firstCtgyId = 1;
 
+
+
+

@@ -5,7 +5,6 @@ import dbConfig from '../config/Dbconfig'
 import { Dialect } from 'sequelize' // 数据库
 import { Sequelize } from 'sequelize-typescript'
 import path from "path";
-import {logger} from "sequelize/types/utils/logger";
 
 class BaseDao {
   static baseDao = new BaseDao()
@@ -30,7 +29,7 @@ class BaseDao {
     })
   }
   addModels(){
-    const modulePath = path.join(process.cwd(),'/src/modules/decorateModel/UserInfo.ts')
+    const modulePath = path.join(process.cwd(),'/src/modules/decorateModel')
     this.sequelize.addModels([modulePath])
   }
 }
