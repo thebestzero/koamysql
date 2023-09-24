@@ -6,11 +6,23 @@ import booksDao from '@/modules/books/dao/booksDao'
 @Controller('/booksmodule')
 class BooksController{
 
-    @get("/findBooksByThirdCtgyId/:thirdctgyId")
+    @get("/findBooksByThirdCtgyId/:thirdctgyId/:sortField/:ascOrDesc")
     async findSecThirdCtgys(ctx:Context){
-        const {thirdctgyId} = ctx.params;
+        const {thirdctgyId,sortField,ascOrDesc} = ctx.params;
         const res = await booksDao.findBooksByThirdCtgyId(
-            parseInt(thirdctgyId)
+            parseInt(thirdctgyId),
+            sortField,
+            ascOrDesc
+        )
+        ctx.body = success(res)
+    }
+    @get("/findBooksBySecCtgyId/:secondctgyId/:sortField/:ascOrDesc")
+    async findBooksBySecCtgyId(ctx:Context){
+        const {secondctgyId,sortField,ascOrDesc} = ctx.params;
+        const res = await booksDao.findBooksBySecCtgyId(
+            parseInt(secondctgyId),
+            sortField,
+            ascOrDesc
         )
         ctx.body = success(res)
     }
