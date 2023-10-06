@@ -1,11 +1,6 @@
 import Koa from 'koa'
-import body from "koa-body";// 支持post请求依赖
-import json from 'koa-json'// 支持响应数据对象 转 json
-import Router from "koa-router";
 import allRouterLoader from './common/AllCtrlRouterLoader'
-import Dbconfig from "./config/Dbconfig";
 const app = new Koa()
-const router = new Router()
 allRouterLoader.init(app) //动态加载路由
 
 

@@ -12,10 +12,10 @@ class AllRouterLoader {
     // 初始化方法
     init(app: Koa) {
         this.app = app
-        // 保存根路由
-        this.storeRootRouterToCtx()
         // 加载中间件
         this.loadMiddleAware()
+        // 保存根路由
+        this.storeRootRouterToCtx()
         // 加载控制器路由
         this.loadAllCtrlRouterWrapper();
         // 监听
@@ -23,8 +23,8 @@ class AllRouterLoader {
     }
     loadMiddleAware(){
         this.app.use(globalException)
-        this.app.use(json())
         this.app.use(body())
+        this.app.use(json())
     }
     storeRootRouterToCtx() {
         const rootRouter = new Router()
