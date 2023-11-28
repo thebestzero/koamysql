@@ -1,4 +1,5 @@
 import Keyword from "@/modules/decorateModel/keyword";
+import Historykeyword from "@/modules/decorateModel/historykeyword"
 import {sequelize} from "@/modules/BaseDao";
 import {Op} from "sequelize";
 
@@ -17,11 +18,11 @@ class SearchDao {
     }
     // 查询是否存在该历史关键字
     async searchHistoryKeywords(historykeyword:string){
-        return  await Keyword.findOne({
+        return  await Historykeyword.findOne({
             raw:true,
             where:{
-                keyword:{
-                    [Op.like]:`%${historykeyword}%`
+                historykeyword:{
+                    [Op.like]:`${historykeyword}`
                 }
             }
         })
@@ -33,6 +34,14 @@ class SearchDao {
     async updateHistoryKeywordCount(historykeyword:string):Promise<[any,any]>{
         const sql = `update historykeyword set clickcount=clickcount+1 where historykeyword = '${historykeyword}'`
         return sequelize.query(sql)
+    }
+    async searchDecovery(){
+        return  Historykeyword.findAll({
+            order:[['clickcount','desc']],
+            raw:true,
+            offset:0,
+            limit:6
+        })
     }
 }
 

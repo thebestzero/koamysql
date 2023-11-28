@@ -8,14 +8,18 @@ import searchService from "@/modules/search/service/searchService";
 @Controller('/searchmodule')
 class CtgyController{
     @post('/addOrUpdateHistoryKeyword')
-    async findFirstCtgyList(ctx:Context){
+    async addOrUpdateHistoryKeyword(ctx:Context){
         const {historykeyword} = ctx.request.body
         ctx.body = success(await SearchService.addOrUpdateHistoryKeyword(historykeyword))
     }
     @get("/searchKeywords/:key")
-    async findSecThirdCtgys(ctx:Context){
+    async searchKeywords(ctx:Context){
         const {key} = ctx.params;
         ctx.body = success(await searchService.searchKeywords(key))
+    }
+    @get("/searchDecovery")
+    async searchDecovery(ctx:Context){
+        ctx.body = success(await searchService.searchDecovery())
     }
 }
 
