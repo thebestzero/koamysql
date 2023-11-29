@@ -39,4 +39,5 @@ export default class UserinfoModel extends Model<UserinfoModel> {
         allowNull: false,
     })
     public valid!: number
+    public token!: string
 }

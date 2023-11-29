@@ -1,10 +1,16 @@
 import { model } from '../defineModel/index'
 // import '../../BaseDao'
-// import model from '../../decorateModel/Userinfo'
+import UserinfoModel from '../../decorateModel/Userinfo'
 import { Op } from 'sequelize'
 import { Sequelize } from 'sequelize-typescript'
 class UserDao {
     static useDao: UserDao = new UserDao()
+    findOneUser(username:string,password:string){
+        return UserinfoModel.findOne({
+            raw:true,
+            where:{username,password}
+        })
+    }
     addUser(userInfo: UserInfo) {
         return model.create(userInfo)
     }
@@ -94,6 +100,7 @@ export type UserInfo = {
     password: string
     address: string
     valid: number
+    token:string
 }
 
 export default UserDao.useDao
