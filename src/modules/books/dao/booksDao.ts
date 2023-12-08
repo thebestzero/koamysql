@@ -11,6 +11,14 @@ class BooksDao{
             }
         })
     }
+    async findBookByISBN(isbn:string){
+        return await Books.findOne({
+            raw:true,
+            where:{
+                isbn
+            }
+        })
+    }
     async findBooksBySecCtgyId(secondctgyId:number,sortField:string = 'originalprice',ascOrDesc:string = 'asc'){
         return  await Books.findAll({
             order:[[sortField,ascOrDesc]],

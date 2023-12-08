@@ -26,6 +26,11 @@ class BooksController{
         )
         ctx.body = success(res)
     }
+    @get("/findBookByISBN/:isbn")
+    async findBookByISBN(ctx:Context){
+        const {isbn} = ctx.params
+        ctx.body = success(await booksDao.findBookByISBN(isbn))
+    }
 }
 
 

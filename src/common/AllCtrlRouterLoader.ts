@@ -4,6 +4,7 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import body from 'koa-body'
 import json from 'koa-json'
+import koajwt from 'koa-jwt'
 import globalException from "./GlobalExce";
 class AllRouterLoader {
     app!: Koa
@@ -25,6 +26,12 @@ class AllRouterLoader {
         this.app.use(globalException)
         this.app.use(body())
         this.app.use(json())
+        this.app.use(koajwt({ secret: 'dkdj88a1' }).unless({
+            path:[/^\/dang\/usermodule\/login/,
+                /^\/dang\/ctgymodule/,
+                /^\/dang\/booksmodule\/findBookByISBN/
+            ]
+        }))
     }
     storeRootRouterToCtx() {
         const rootRouter = new Router()
@@ -72,3 +79,4 @@ class AllRouterLoader {
 }
 
 export default AllRouterLoader.allRouterLoader
+
